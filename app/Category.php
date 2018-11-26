@@ -3,13 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Product;
 
 class Category extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'description',
+    ];
+
+    protected $dates = ['deleted_at'];
+
+    protected $hidden = [
+        'pivot'
     ];
 
     public function products(){
