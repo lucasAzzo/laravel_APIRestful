@@ -1,0 +1,21 @@
+php artisan make:mail --Prueba -m emails.prueba ---> markdown template
+
+php artisan db:seed
+
+php artisan migrate:refresh --seed
+
+composer require guzzlehttp/guzzle --> para el manejo de mails
+
+https://www.youtube.com/watch?v=YQe-Ab_Voto --> video para configurar mail y host
+
+php artisan make:controller Product/ProductBuyerTransactionController -r -m Product
+
+php artisan route:list
+
+php artisan make:model Category -m --> -m genera la migracion correspondiente
+
+php artisan make:middleware SignatureMiddleware
+
+composer require spatie/laravel-fractal --> transformacion de datos (transformar rtas por seguridad y mantenimiento)
+
+php artisan make:transformer UserTransformer

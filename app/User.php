@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Transformers\UserTransformer;
 
 class User extends Authenticatable
 {
@@ -16,6 +17,8 @@ class User extends Authenticatable
 
     const USUARIO_ADMINISTRADOR = 'true';
     const USUARIO_REGULAR = 'false';
+
+    public $transformer = UserTransformer::class;
 
     protected $table = 'users';
     protected $dates = ['deleted_at'];
@@ -30,9 +33,21 @@ class User extends Authenticatable
         'email', 
         'password',
         'verified',
-        'verified_token',
+        'verification_token',
         'admin',
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 
+        'remember_token',
+        'verification_token',
+    ];
+
 
     public function setNameAttribute($valor){
         $this->attributes['name'] = strtolower($valor);
@@ -45,17 +60,6 @@ class User extends Authenticatable
     public function setEmailAttribute($valor){
         $this->attributes['email'] = strtolower($valor);
     }
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 
-        'remember_token',
-        'verification_token',
-    ];
 
     public function esVerificado(){
         return $this->verified == User::USUARIO_VERIFICADO;
