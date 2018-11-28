@@ -19,3 +19,25 @@ php artisan make:middleware SignatureMiddleware
 composer require spatie/laravel-fractal --> transformacion de datos (transformar rtas por seguridad y mantenimiento)
 
 php artisan make:transformer UserTransformer
+
+
+-- Laravel passport
+
+composer require laravel/passport
+
+php artisan migrate
+
+php artisan passport:install --> genera dos tipos de clientes con sus llaves 
+
+php artisan passport:client --> crear un nuevo cliente con su access token (client_credentials) no esta asociado
+a ningun usuario
+
+php artisan passport:client --password --> está vinculado a un usuario
+
+php artisan vendor:publish --tag=passport-components --> publicar los componentes de laravel passport
+
+npm install --> afuera de la maquina virtual
+
+npm run dev --> afuera de la maquina virtual
+
+php artisan passport:client --personal --> no es necesario si deja crear tokens al iniciar session
