@@ -41,3 +41,9 @@ npm install --> afuera de la maquina virtual
 npm run dev --> afuera de la maquina virtual
 
 php artisan passport:client --personal --> no es necesario si deja crear tokens al iniciar session
+
+php artisan make:policy BuyerPolicy --model=Buyer
+
+composer require barryvdh/laravel-cors
+
+php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"
